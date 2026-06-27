@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from dotenv import load_dotenv
 from app.core.database import engine, Base
 from app.models import category, state, resource, certification
+from app.routers import categories
+
 
 load_dotenv()
 
@@ -12,6 +14,8 @@ app = FastAPI(
     description="Helping immigratants find resources across the United States",
     version="1.0.0"
 )
+
+app.include_router(categories.router)
 
 
 @app.get("/")

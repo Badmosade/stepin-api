@@ -13,7 +13,7 @@ class Resource(Base):
     phone = Column(String, nullable=True)
     website = Column(String, nullable=True)
     state_id = Column(Integer, ForeignKey("states.id"), nullable=False)
-    category = Column(Integer, ForeignKey("categories.id"), nullable=False)
+    category_id = Column(Integer, ForeignKey("categories.id"), nullable=False)
 
-    state = relationship("State")
-    category = relationship("Category")
+    state = relationship("State", foreign_keys=[state_id])
+    category = relationship("Category", foreign_keys=[category_id])
