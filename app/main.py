@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from dotenv import load_dotenv
 from app.core.database import engine, Base
 from app.models import category, state, resource, certification
-from app.routers import categories
+from app.routers import categories, states, resources
 
 
 load_dotenv()
@@ -16,6 +16,8 @@ app = FastAPI(
 )
 
 app.include_router(categories.router)
+app.include_router(states.router)
+app.include_router(resources.router)
 
 
 @app.get("/")
